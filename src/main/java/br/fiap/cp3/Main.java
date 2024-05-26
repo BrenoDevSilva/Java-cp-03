@@ -1,21 +1,91 @@
 import models.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Doador doador = new Doador("Maria Silva", "123.456.789-00", "Rua A, 123", "99999-9999");
-        InstituicaoCaridade instituicao = new InstituicaoCaridade("Caridade RS", "12.345.678/0001-90", "Rua E, 345", "55555-5555", "Assistência social");
-        Voluntario voluntario = new Voluntario("Ana Costa", "111.222.333-44", "Rua B, 678", "88888-8888", "Manhã", "Enfermagem");
+        Scanner scanner = new Scanner(System.in); // Inicialização do objeto Scanner para entrada de dados
 
-        Doacao doacao = new Doacao(doador, instituicao, "Alimentos", 150.0, "2023-05-26");
+        // Solicitação da opção desejada ao usuário
+        System.out.println("1.cadastrar");
+        System.out.println("2.fazer uma doação");
+        System.out.println("3.visualizar");
+        int opcao = scanner.nextInt(); // Leitura da opção escolhida pelo usuário
+        scanner.nextLine(); // Limpar o buffer
 
-        doador.adicionarDoacao(doacao);
-        instituicao.adicionarDoacaoRecebida(doacao);
-        instituicao.adicionarVoluntario(voluntario);
+        switch (opcao) {
+            case 1:
+                System.out.println("o que deseja cadstrar?");
+                System.out.println("1.doadores");
+                System.out.println("2.voluntarios");
+                System.out.println("3.intituições de caridade");
+                int cOption = scanner.nextInt();
+                scanner.nextLine(); // Limpar o buffer
 
-        System.out.println("Sistema de Voluntariado");
-        System.out.println("Doador: " + doador.getNome());
-        System.out.println("Instituição: " + instituicao.getNome());
-        System.out.println("Voluntário: " + voluntario.getNome());
-        System.out.println("Doação: " + doacao.getTipoDoacao() + " de valor " + doacao.getValor());
+                switch (cOption) {
+                    case 1:
+                        System.out.println("digite o nome do doador:");
+                        String nome = scanner.nextInt();
+                        System.out.println("cpf do doador:");
+                        String cpf = scanner.nextInt();
+                        System.out.println("endereco do doador:");
+                        String endereco = scanner.nextInt();
+                        System.out.println("contato do doador:");
+                        String contato = scanner.nextInt();
+
+                    case 2:
+                        System.out.println("digite o nome do voluntario:");
+                        String nome = scanner.nextInt();
+                        System.out.println("cpf do voluntario:");
+                        String cpf = scanner.nextInt();
+                        System.out.println("endereco do voluntario:");
+                        String endereco = scanner.nextInt();
+                        System.out.println("contato do voluntrio:");
+                        String contato = scanner.nextInt();
+                        System.out.println("disponibilidade de horario:");
+                        String disp = scanner.nextInt();
+                        System.out.println("habilidades do voluntario:");
+                        String habilidades = scanner.nextInt();
+
+                    case 3:
+                        System.out.println("digite o nome da instituição:");
+                        String nome = scanner.nextInt();
+                        System.out.println("cnpj da instituição:");
+                        String cnpj = scanner.nextInt();
+                        System.out.println("endereco da instituição:");
+                        String endereco = scanner.nextInt();
+                        System.out.println("contato da instituição:");
+                        String contato = scanner.nextInt();
+                        System.out.println("área de atuação:");
+                        String areaAtuacao = scanner.nextInt();
+
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+                break;
+            case 2:
+                System.out.println("digite o nome do doador:");
+                String nome = scanner.nextInt();
+                System.out.println("digite a qual instituição você deseja mandar:");
+                String intituicao = scanner.nextInt();
+                System.out.println("deseja doar um valor ou um material?");
+                String tipo = scanner.nextInt();
+                if tipo == "valor" {
+                    System.out.println("digite o valor:");
+                    int valor = scanner.nextInt();
+                }
+                else {}
+                System.out.println("digite a data da doação");
+                String data = scanner.nextInt();
+
+            }
+
+        }
+
+        scanner.close();
+    }
+
+    // Método para verificar se o texto contém caracteres inválidos (números e caracteres acentuados)
+    private static boolean verificarCaracteresInvalidos(String texto) {
+        return texto.matches(".*[áàãâéèêíìîóòõôúùûç\\d].*");
     }
 }

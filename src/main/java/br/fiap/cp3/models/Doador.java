@@ -1,21 +1,20 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Doador {
     private String nome;
     private String cpf;
     private String endereco;
     private String contato;
-    private List<Doacao> historicoDoacoes;
+    private Doacao[] historicoDoacoes;
+    private int quantidadeDoacoes;
 
     public Doador(String nome, String cpf, String endereco, String contato) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
         this.contato = contato;
-        this.historicoDoacoes = new ArrayList<>();
+        this.historicoDoacoes = new Doacao[];
+        this.quantidadeDoacoes = 0;
     }
 
     // Getters e Setters
@@ -51,12 +50,21 @@ public class Doador {
         this.contato = contato;
     }
 
-    public List<Doacao> getHistoricoDoacoes() {
+    public Doacao[] getHistoricoDoacoes() {
         return historicoDoacoes;
+    }
+
+    public int getQuantidadeDoacoes() {
+        return quantidadeDoacoes;
     }
 
     // Métodos adicionais
     public void adicionarDoacao(Doacao doacao) {
-        this.historicoDoacoes.add(doacao);
+        if (quantidadeDoacoes < historicoDoacoes.length) {
+            this.historicoDoacoes[quantidadeDoacoes] = doacao;
+            quantidadeDoacoes++;
+        } else {
+            System.out.println("Capacidade máxima de doações atingida.");
+        }
     }
 }

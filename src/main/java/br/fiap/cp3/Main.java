@@ -1,4 +1,4 @@
-import models.*;
+import models;
 import java.util.Scanner;
 
 public class Main {
@@ -31,7 +31,7 @@ public class Main {
                         String endereco = scanner.nextInt();
                         System.out.println("contato do doador:");
                         String contato = scanner.nextInt();
-
+                        Doador.cadastrarDoador(nome,cpf,endereco,contato);
                     case 2:
                         System.out.println("digite o nome do voluntario:");
                         String nome = scanner.nextInt();
@@ -45,7 +45,7 @@ public class Main {
                         String disp = scanner.nextInt();
                         System.out.println("habilidades do voluntario:");
                         String habilidades = scanner.nextInt();
-
+                        Voluntario.cadastrarVoluntario(nome,cpf,endereco,contato,disp,habilidades);
                     case 3:
                         System.out.println("digite o nome da instituição:");
                         String nome = scanner.nextInt();
@@ -57,7 +57,7 @@ public class Main {
                         String contato = scanner.nextInt();
                         System.out.println("área de atuação:");
                         String areaAtuacao = scanner.nextInt();
-
+                        InstituicaoCaridade.cadastrarInstituicao(nome,cnpj,endereco,contato,areaAtuacao);
                     default:
                         System.out.println("Opção inválida!");
                 }
@@ -83,9 +83,3 @@ public class Main {
 
         scanner.close();
     }
-
-    // Método para verificar se o texto contém caracteres inválidos (números e caracteres acentuados)
-    private static boolean verificarCaracteresInvalidos(String texto) {
-        return texto.matches(".*[áàãâéèêíìîóòõôúùûç\\d].*");
-    }
-}

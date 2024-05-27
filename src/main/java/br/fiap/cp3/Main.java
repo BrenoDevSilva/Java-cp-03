@@ -1,88 +1,116 @@
-import models;
+import br.fiap.cp3.models.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // Inicialização do objeto Scanner para entrada de dados
+        Scanner scanner = new Scanner(System.in);
 
-        // Solicitação da opção desejada ao usuário
-        System.out.println("1.cadastrar");
-        System.out.println("2.fazer uma doação");
-        System.out.println("3.visualizar");
-        int opcao = scanner.nextInt(); // Leitura da opção escolhida pelo usuário
-        scanner.nextLine(); // Limpar o buffer
+        System.out.println("1. Cadastrar");
+        System.out.println("2. Fazer uma doação");
+        System.out.println("3. Visualizar");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
 
         switch (opcao) {
             case 1:
-                System.out.println("o que deseja cadstrar?");
-                System.out.println("1.doadores");
-                System.out.println("2.voluntarios");
-                System.out.println("3.intituições de caridade");
+                System.out.println("O que deseja cadastrar?");
+                System.out.println("1. Doadores");
+                System.out.println("2. Voluntários");
+                System.out.println("3. Instituições de Caridade");
                 int cOption = scanner.nextInt();
                 scanner.nextLine(); // Limpar o buffer
 
                 switch (cOption) {
                     case 1:
-                        System.out.println("digite o nome do doador:");
-                        String nome = scanner.nextString();
-                        System.out.println("cpf do doador:");
-                        String cpf = scanner.nextLine();
-                        System.out.println("endereco do doador:");
-                        String endereco = scanner.nextLine();
-                        System.out.println("contato do doador:");
-                        String contato = scanner.nextLine();
-                        Doador.cadastrarDoador(nome,cpf,endereco,contato);
+                        System.out.println("Digite o nome do doador:");
+                        String nomeDoador = scanner.nextLine();
+                        System.out.println("CPF do doador:");
+                        String cpfDoador = scanner.nextLine();
+                        System.out.println("Endereço do doador:");
+                        String enderecoDoador = scanner.nextLine();
+                        System.out.println("Contato do doador:");
+                        String contatoDoador = scanner.nextLine();
+
+                        break;
                     case 2:
-                        System.out.println("digite o nome do voluntario:");
-                        String nome = scanner.nextString();
-                        System.out.println("cpf do voluntario:");
-                        String cpf = scanner.nextString();
-                        System.out.println("endereco do voluntario:");
-                        String endereco = scanner.next();
-                        System.out.println("contato do voluntrio:");
-                        String contato = scanner.nextLine();
-                        System.out.println("disponibilidade de horario:");
-                        String disp = scanner.nextLine();
-                        System.out.println("habilidades do voluntario:");
-                        String habilidades = scanner.nextLine();
-                        Voluntario.cadastrarVoluntario(nome,cpf,endereco,contato,disp,habilidades);
+                        System.out.println("Digite o nome do voluntário:");
+                        String nomeVoluntario = scanner.nextLine();
+                        System.out.println("CPF do voluntário:");
+                        String cpfVoluntario = scanner.nextLine();
+                        System.out.println("Endereço do voluntário:");
+                        String enderecoVoluntario = scanner.nextLine();
+                        System.out.println("Contato do voluntário:");
+                        String contatoVoluntario = scanner.nextLine();
+                        System.out.println("Disponibilidade de horário:");
+                        String dispHorario = scanner.nextLine();
+                        System.out.println("Habilidades do voluntário:");
+                        String habilidadesVoluntario = scanner.nextLine();
+
+                        break;
                     case 3:
-                        System.out.println("digite o nome da instituição:");
-                        String nome = scanner.nextLine();
-                        System.out.println("cnpj da instituição:");
-                        String cnpj = scanner.nextLine();
-                        System.out.println("endereco da instituição:");
-                        String endereco = scanner.nextLine();
-                        System.out.println("contato da instituição:");
-                        String contato = scanner.nextLine();
-                        System.out.println("área de atuação:");
-                        String areaAtuacao = scanner.nextLine();
-                        InstituicaoCaridade.cadastrarInstituicao(nome,cnpj,endereco,contato,areaAtuacao);
+                        System.out.println("Digite o nome da instituição:");
+                        String nomeInstituicao = scanner.nextLine();
+                        System.out.println("CNPJ da instituição:");
+                        String cnpjInstituicao = scanner.nextLine();
+                        System.out.println("Endereço da instituição:");
+                        String enderecoInstituicao = scanner.nextLine();
+                        System.out.println("Contato da instituição:");
+                        String contatoInstituicao = scanner.nextLine();
+                        System.out.println("Área de atuação da instituição:");
+                        String areaAtuacaoInstituicao = scanner.nextLine();
+
+                        break;
                     default:
                         System.out.println("Opção inválida!");
                 }
                 break;
             case 2:
-                System.out.println("digite o nome do doador:");
-                String nome = scanner.nextLine();
-                System.out.println("digite a qual instituição você deseja mandar:");
-                String instituicao = scanner.nextLine();
-                System.out.println("deseja doar um valor ou um material?");
-                String tipo = scanner.nextLine();
-                if tipo == "valor" {
-                    System.out.println("digite o valor:");
-                    int valor = scanner.nextLine();
-                    System.out.println("digite a data da doação");
-                    String data = scanner.nextLine();
-                    Doacao.cadastrarDoacao(nome, instituicao, tipo, valor, data)
-                }else{
-                    System.out.println("Agende com a institução sua doação");
+                System.out.println("Digite o nome do doador:");
+                String nomeDoadorDoacao = scanner.nextLine();
+                System.out.println("Digite a qual instituição você deseja mandar:");
+                String instituicaoDoacao = scanner.nextLine();
+                System.out.println("Deseja doar um valor ou um material?");
+                String tipoDoacao = scanner.nextLine();
+                if (tipoDoacao.equals("valor")) {
+                    System.out.println("Digite o valor:");
+                    int valorDoacao = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Digite a data da doação:");
+                    String dataDoacao = scanner.nextLine();
+
+                } else {
+                    System.out.println("Agende com a instituição sua doação.");
                 }
+                break;
+            case 3:
+                System.out.println("Qual tipo de informação você deseja visualizar?");
+                System.out.println("1.Doadores");
+                System.out.println("2.Voluntários");
+                System.out.println("3.Instituições de Caridade");
+                int vOption = scanner.nextInt();
+                scanner.nextLine();
 
-
-            }
-
+                switch (vOption) {
+                    case 1:
+                        System.out.println("Lista de Doadores:");
+                        Doador.listarDoadores()
+                        break;
+                    case 2:
+                        System.out.println("Lista de Voluntários:");
+                        Voluntario.listarVoluntarios()
+                        break;
+                    case 3:
+                        System.out.println("Lista de Instituições de Caridade:");
+                        InstitucaoCaridade.listarInstituicoes()
+                        break;
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+                break;
+            default:
+                System.out.println("Opção inválida!");
         }
 
         scanner.close();
     }
+}
